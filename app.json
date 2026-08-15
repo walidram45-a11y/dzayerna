@@ -2,6 +2,7 @@
   "expo": {
     "name": "دزايرنا",
     "slug": "dzayerna",
+    "owner": "lotfreestyles-team",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./icon.png",
@@ -23,6 +24,11 @@
     },
     "plugins": [
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a60d64b1-d35d-4203-9ee1-1e2b85f19dff"
+      }
+    }
   }
 }
