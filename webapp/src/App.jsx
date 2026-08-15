@@ -13,15 +13,20 @@ import {
    ALGERIA NATIONAL PALETTE
 --------------------------------------------------------- */
 const C = {
-  green: "#046A38",
+  green: "#0B6B3A",
   greenDark: "#03502A",
-  greenSoft: "#046A3810",
+  greenSoft: "#0B6B3A14",
   red: "#D21034",
   redSoft: "#D2103412",
+  gold: "#A9762F",
+  goldSoft: "#A9762F1A",
   white: "#FFFFFF",
-  bg: "#F4F6F5",
-  text: "#15201A",
-  textMuted: "#68766F",
+  bg: "#FAF9F5",
+  headerBg: "#F3F1E9",
+  cream: "#F3F1E9",
+  creamBorder: "#E4E0D3",
+  text: "#14231C",
+  textMuted: "#5E6B63",
   border: "#0000000F",
 };
 
@@ -38,13 +43,27 @@ const ALGERIA_EMBLEM_DATA_URI =
 
 function AlgeriaEmblem({ size = 52 }) {
   return (
-    <img
-      src={ALGERIA_EMBLEM_DATA_URI}
-      alt="شعار الجمهورية الجزائرية الديمقراطية الشعبية"
-      width={size}
-      height={size}
-      style={{ display: "block", flexShrink: 0, borderRadius: "50%" }}
-    />
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        overflow: "hidden",
+        background: C.cream,
+        border: `1.5px solid ${C.creamBorder}`,
+        boxShadow: "0 2px 6px rgba(169,118,47,0.15)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
+      <img
+        src={ALGERIA_EMBLEM_DATA_URI}
+        alt="شعار الجمهورية الجزائرية الديمقراطية الشعبية"
+        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+      />
+    </div>
   );
 }
 
@@ -70,7 +89,8 @@ const CATEGORIES = [
   { id: "jeunesse", label: "الشباب والرياضة", icon: Trophy },
   { id: "energie", label: "الطاقة", icon: Zap },
   { id: "associations", label: "الجمعيات والنقابات", icon: HeartHandshake },
-  { id: "expat", label: "الجالية بالخارج", icon: Globe2 },
+  { id: "expat", label: "الجالية بالخارج", icon: Globe2 },{ id: "digital", label: "الرقمنة والخدمات الإلكترونية", icon: ExternalLink },
+  
 ];
 
 const OFFICIAL_SOURCES = [
@@ -1268,6 +1288,349 @@ const PROCS = [
       "تنظيم النقل مع شركة مؤهلة والتنسيق مع البلدية بالجزائر لتحديد موعد الدفن",
     ],
   },
+  {
+    id: "digital-dzds",
+    cat: "digital",
+    title: "البوابة الوطنية للخدمات الرقمية (Dzair Digital Services)",
+    sub: "بوابة موحدة تجمع أكثر من 52 خدمة رقمية حكومية في مكان واحد",
+    where: "dzds.dz",
+    duration: "خدمة دائمة عبر الإنترنت",
+    fees: "الولوج مجاني (بعض الخدمات داخلها قد تتطلب رسوم)",
+    docs: ["رقم التعريف الوطني (NIN)", "رقم هاتف مسجل باسمك"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى الموقع الرسمي dzds.dz",
+      "إنشاء حساب جديد أو تسجيل الدخول",
+      "اختيار الخدمة المطلوبة من القائمة",
+      "تعبئة الطلب واتباع التعليمات الظاهرة"
+    ],
+    note: "الرابط الرسمي الوحيد هو dzds.dz — احذر من أي رابط آخر يُشارك عبر فيسبوك أو مواقع مشبوهة"
+  },
+  {
+    id: "digital-baridimob",
+    cat: "digital",
+    title: "بريدي موب (BaridiMob) وبريدي نات",
+    sub: "التطبيق الرسمي لبريد الجزائر لتسيير حساب CCP والدفع الإلكتروني",
+    where: "poste.dz / تطبيق BaridiMob من المتجر الرسمي",
+    duration: "التفعيل فوري بعد التسجيل بحساب CCP",
+    fees: "مجاني، برسوم اشتراك شهرية رمزية حسب الخدمة",
+    docs: ["حساب بريدي جاري (CCP) نشط", "رقم الهاتف المسجل بالحساب"],
+    forExpats: false,
+    steps: [
+      "تحميل تطبيق BaridiMob من Google Play الرسمي فقط",
+      "إدخال رقم الحساب البريدي (CCP) والمعلومات الشخصية",
+      "تفعيل الحساب عبر رمز التحقق المرسل بالـ SMS",
+      "الاستفادة من التحويلات، شحن الرصيد، ودفع الفواتير"
+    ],
+    note: "حمّل التطبيق فقط من المتجر الرسمي، ولا تشارك كلمة المرور مع أي شخص"
+  },
+  {
+    id: "digital-tabioucom",
+    cat: "digital",
+    title: "طابعكم — دفع الطوابع الجبائية إلكترونيًا",
+    sub: "منصة المديرية العامة للضرائب لشراء الطوابع الجبائية عبر الإنترنت",
+    where: "tabioucom.mf.gov.dz",
+    duration: "الوصل جاهز فورًا بعد الدفع",
+    fees: "قيمة الطابع تختلف حسب الوثيقة المطلوبة (جواز سفر، بطاقة تعريف، رخصة سياقة...)",
+    docs: ["بطاقة بنكية (ذهبية أو CIB)", "معرفة نوع الوثيقة المطلوبة"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى tabioucom.mf.gov.dz",
+      "اختيار نوع الوثيقة (جواز سفر، بطاقة تعريف، رخصة سياقة)",
+      "الدفع الإلكتروني بالبطاقة البنكية",
+      "تحميل وطباعة وصل الطابع الجبائي الإلكتروني"
+    ],
+    note: "الوصل الإلكتروني يُدرج مباشرة في ملف طلب الوثيقة المعنية"
+  },
+  {
+    id: "digital-cnas",
+    cat: "digital",
+    title: "الفضاء الرقمي لـ CNAS (العمال الأجراء)",
+    sub: "خدمات إلكترونية للمؤمَّن اجتماعيًا: شهادات الانتساب، متابعة الملفات",
+    where: "cnas.dz",
+    duration: "استخراج الشهادات فوري أونلاين",
+    fees: "مجاني",
+    docs: ["رقم الضمان الاجتماعي", "بطاقة التعريف الوطنية"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى الموقع الرسمي cnas.dz",
+      "الولوج للفضاء الشخصي أو استعمال خدمة elhanaa.cnas.dz",
+      "استخراج شهادة الانتساب أو عدم الانتساب مباشرة",
+      "تحميل وطباعة الوثيقة"
+    ],
+    note: "الخدمة موجهة للعمال الأجراء؛ غير الأجراء يستعملون CASNOS"
+  },
+  {
+    id: "digital-casnos",
+    cat: "digital",
+    title: "الفضاء الرقمي لـ CASNOS (غير الأجراء)",
+    sub: "التصريح بالنشاط ودفع الاشتراكات لأصحاب المهن الحرة والحرفيين",
+    where: "casnos.com.dz — خدمات إلكترونية عبر damancom.casnos.dz",
+    duration: "التصريح بالنشاط يجب خلال 10 أيام من بداية النشاط",
+    fees: "حسب فئة النشاط؛ التأخر في التصريح يعرض لغرامة 5000 دج + 20% شهريًا",
+    docs: ["السجل التجاري أو بطاقة الحرفي", "بطاقة التعريف الوطنية"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى damancom.casnos.dz",
+      "إنشاء حساب أو تسجيل الدخول",
+      "ملء استمارة التصريح بالنشاط",
+      "متابعة الاشتراكات ودفعها إلكترونيًا"
+    ],
+    note: "إلزامية لكل من يمارس نشاطًا مستقلًا حتى بدون أعوان"
+  },
+  {
+    id: "digital-cnr",
+    cat: "digital",
+    title: "فضاء المتقاعد — CNR",
+    sub: "متابعة ملف التقاعد، معرفة قيمة المعاش، والتحقق من الوثائق",
+    where: "cnr.dz و dz.cnr.dz (فضاء المتقاعد)",
+    duration: "المعلومات متاحة فورًا أونلاين",
+    fees: "مجاني",
+    docs: ["رقم وصل استلام ملف التقاعد", "رقم الضمان الاجتماعي وبطاقة التعريف"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى www.cnr.dz",
+      "اختيار 'الخدمات الإلكترونية' أو فضاء المتقاعد",
+      "إدخال رقم الضمان الاجتماعي ورقم بطاقة التعريف",
+      "متابعة حالة الملف أو استخراج شهادة الدخل"
+    ],
+    note: "يمكن أيضًا التحقق من صحة الوثائق الصادرة عن الصندوق عبر retraite.cnr.dz/#/validate"
+  },
+  {
+    id: "digital-interieur-services",
+    cat: "digital",
+    title: "بوابة الخدمات الإلكترونية لوزارة الداخلية",
+    sub: "أكثر من 62 إجراء إداري عن بعد: شهادات ميلاد، زواج، وفاة، وغيرها",
+    where: "services.interieur.gov.dz",
+    duration: "استخراج شهادات الحالة المدنية فوري أونلاين",
+    fees: "مجاني لمعظم الشهادات",
+    docs: ["بطاقة التعريف الوطنية البيومترية", "رقم الحالة المدنية إن وجد"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى services.interieur.gov.dz",
+      "اختيار الإجراء المطلوب من القائمة",
+      "إدخال المعلومات الشخصية المطلوبة",
+      "استخراج الوثيقة إلكترونيًا دون تنقل"
+    ],
+    note: "نفس البوابة تسمح كذلك بطلب بطاقة التعريف البيومترية لحاملي جواز السفر البيومتري"
+  },
+  {
+    id: "digital-anem",
+    cat: "digital",
+    title: "الوكالة الوطنية للتشغيل (ANEM) — منصة وسيط أونلاين",
+    sub: "التسجيل كطالب عمل، تجديد الطلب، ومنحة البطالة",
+    where: "anem.dz (الموقع الرئيسي) — البوابة الفرعية قد تتغير، تأكد من anem.dz أولًا",
+    duration: "تفعيل الحساب خلال 72 ساعة كحد أقصى",
+    fees: "مجاني",
+    docs: ["شهادة أو مؤهل دراسي", "بطاقة التعريف الوطنية"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى anem.dz والبحث عن رابط منصة وسيط أونلاين المحدّث",
+      "إنشاء حساب كطالب عمل",
+      "استكمال بيانات المؤهلات والخبرة",
+      "متابعة العروض وتجديد الطلب دوريًا"
+    ],
+    note: "⚠️ روابط البوابات الفرعية (وسيط أونلاين) تتغير أحيانًا؛ اعتمد دائمًا anem.dz كمرجع أول واحذر الصفحات المزيفة"
+  },
+  {
+    id: "digital-anade",
+    cat: "digital",
+    title: "الوكالة الوطنية لدعم وتنمية المقاولاتية (ANADE)",
+    sub: "دعم وتمويل حاملي المشاريع من مختلف الفئات العمرية حتى 55 سنة",
+    where: "anade.dz — التسجيل عبر promoteur.anade.dz",
+    duration: "دراسة الملف تستغرق عدة أسابيع حسب برنامج الدعم",
+    fees: "حسب برنامج التمويل المختار (قروض بدون فائدة، تمويل ثلاثي...)",
+    docs: ["دراسة جدوى المشروع", "بطاقة التعريف الوطنية", "شهادة الإقامة"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى promoteur.anade.dz",
+      "إنشاء حساب كصاحب مشروع",
+      "ملء ملف المشروع (الطبيعة، التكلفة، التمويل)",
+      "متابعة دراسة الملف عبر الوكالة الولائية"
+    ],
+    note: "الوكالة كانت تُعرف سابقًا بـ ANSEJ قبل التحول إلى ANADE سنة 2020"
+  },
+  {
+    id: "digital-cnrc",
+    cat: "digital",
+    title: "المركز الوطني للسجل التجاري (CNRC) — بوابة سجلكوم",
+    sub: "استخراج السجل التجاري والتحقق منه إلكترونيًا",
+    where: "sidjilcom.cnrc.dz — تسجيل المؤسسات عبر sidjilcom-entreprise.cnrc.dz",
+    duration: "يختلف حسب نوع الإجراء (إنشاء، تعديل، شطب)",
+    fees: "حسب نوع النشاط والإجراء المطلوب",
+    docs: ["بطاقة التعريف الوطنية", "عقد الملكية أو الإيجار للمقر"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى sidjilcom.cnrc.dz",
+      "إنشاء حساب أو تسجيل الدخول",
+      "تعبئة استمارة السجل التجاري إلكترونيًا",
+      "استكمال الإجراء لدى الفرع الولائي إن اقتضى الأمر"
+    ],
+    note: "يتيح الموقع أيضًا قارئ الكود الآمن للتحقق من صحة مستخرجات السجل التجاري"
+  },
+  {
+    id: "digital-douane",
+    cat: "digital",
+    title: "المديرية العامة للجمارك — خدمات ALCES",
+    sub: "التصريح الجمركي، محاكاة الرسوم، والتسجيل الفردي أو للشركات",
+    where: "douane.gov.dz",
+    duration: "يختلف حسب نوع العملية الجمركية",
+    fees: "الرسوم الجمركية تُحسب حسب طبيعة وقيمة البضاعة المستوردة",
+    docs: ["فاتورة الشراء", "بطاقة التعريف الوطنية أو السجل التجاري"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى douane.gov.dz",
+      "الوصول لمنصة ALCES للخدمات الإلكترونية",
+      "التسجيل الفردي أو تسجيل الشركة",
+      "محاكاة الرسوم الجمركية أو إيداع التصريح"
+    ],
+    note: "مفيدة بالخصوص للمقيمين بالخارج الراغبين في استيراد سيارة أو معدات"
+  },
+  {
+    id: "digital-casier",
+    cat: "digital",
+    title: "صحيفة السوابق القضائية إلكترونيًا (القسيمة رقم 3)",
+    sub: "استخراج شهادة السوابق العدلية دون التنقل إلى المحكمة",
+    where: "e-casier.mjustice.dz",
+    duration: "الوثيقة جاهزة بصيغة PDF فور إتمام الطلب",
+    fees: "200 دج (دفع إلكتروني عبر المنصة)",
+    docs: ["بطاقة التعريف الوطنية البيومترية", "رقم هاتف شخصي لاستقبال رمز التحقق"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى e-casier.mjustice.dz فقط (تأكد من الرابط الرسمي)",
+      "إنشاء حساب بالمعلومات الشخصية",
+      "تأكيد الحساب عبر رمز SMS",
+      "طلب واستخراج القسيمة رقم 3 بصيغة PDF موقعة إلكترونيًا"
+    ],
+    note: "الوثيقة الإلكترونية لها نفس القيمة القانونية للوثيقة الورقية وتحتوي على رمز QR للتحقق؛ كل شخص يطلب صحيفته بنفسه فقط"
+  },
+  {
+    id: "digital-aadl",
+    cat: "digital",
+    title: "منصة عدل (AADL) — السكن البيع بالإيجار",
+    sub: "التسجيل ومتابعة ملف الاكتتاب في برامج السكن AADL",
+    where: "aadl.dz — التسجيل عبر inscription.aadl.dz",
+    duration: "يختلف حسب مرحلة البرنامج (اكتتاب، دفع، توزيع)",
+    fees: "حسب صنف السكن والدخل الشهري للمكتتب",
+    docs: ["بطاقة التعريف الوطنية البيومترية", "شهادة الدخل الشهري"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى aadl.dz",
+      "تسجيل الدخول إلى الحساب الشخصي (aadl.dz/relogin)",
+      "متابعة نتيجة الاكتتاب وحالة الملف",
+      "دفع الأشطر المطلوبة إلكترونيًا عند الطلب"
+    ],
+    note: "احذر الروابط غير الرسمية المتداولة على فيسبوك؛ الرابط الوحيد هو aadl.dz"
+  },
+  {
+    id: "digital-sonelgaz",
+    cat: "digital",
+    title: "فضاء الزبون سونلغاز (e-taqaty)",
+    sub: "دفع فواتير الكهرباء والغاز ومتابعة الاستهلاك إلكترونيًا",
+    where: "sonelgaz.dz — فضاء الزبون عبر e-taqaty.sonelgaz.dz",
+    duration: "الدفع والوصل فوريان",
+    fees: "قيمة الفاتورة حسب الاستهلاك (نظام الأشطر)",
+    docs: ["مرجع الزبون (موجود على الفاتورة)", "بطاقة بنكية ذهبية أو CIB"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى e-taqaty.sonelgaz.dz",
+      "إنشاء حساب أو تسجيل الدخول",
+      "إدخال مرجع الزبون للاطلاع على الفاتورة",
+      "الدفع بالبطاقة البنكية ومتابعة منحنى الاستهلاك"
+    ],
+    note: "يمكن الدفع أيضًا عبر تطبيق BaridiMob بنفس مرجع الزبون"
+  },
+    {
+    id: "digital-mfdgi",
+    cat: "digital",
+    title: "المديرية العامة للضرائب — الموقع الرسمي",
+    sub: "معلومات الضرائب، النشرات الرسمية، والخدمات الجبائية للمهنيين والأفراد",
+    where: "mfdgi.gov.dz",
+    duration: "المعلومات متاحة فورًا؛ الخدمات التفاعلية حسب الإجراء",
+    fees: "الاطلاع مجاني",
+    docs: ["رقم التعريف الجبائي (NIF) للمهنيين إن اقتضى الأمر"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى mfdgi.gov.dz",
+      "تصفح الأخبار الجبائية والنشرات الرسمية",
+      "الوصول لخدمة طابعكم لدفع الطوابع الجبائية",
+      "التواصل مع مصلحة الضرائب المختصة عند الحاجة"
+    ],
+    note: "الموقع يوجه أيضًا لمنصة طابعكم (tabioucom.mf.gov.dz) للدفع الإلكتروني"
+  },
+  {
+    id: "digital-passeport-interieur",
+    cat: "digital",
+    title: "بوابة جواز السفر وبطاقة التعريف البيومترية",
+    sub: "طلب ومتابعة جواز السفر والبطاقة الوطنية البيومترية إلكترونيًا",
+    where: "passeport.interieur.gov.dz",
+    duration: "متابعة الطلب فورية أونلاين؛ آجال الإصدار تختلف حسب المصلحة",
+    fees: "حسب نوع الوثيقة (طابع جبائي عبر tabioucom.mf.gov.dz)",
+    docs: ["بطاقة التعريف الوطنية أو جواز سفر سابق", "شهادة الميلاد", "شهادة الإقامة"],
+    forExpats: true,
+    steps: [
+      "الدخول إلى passeport.interieur.gov.dz",
+      "طلب بطاقة التعريف البيومترية مباشرة لحاملي جواز السفر البيومتري",
+      "متابعة حالة طلب جواز السفر أو بطاقة التعريف",
+      "استلام الوثيقة من المصلحة المختصة عند الجاهزية"
+    ],
+    note: "الجزائريون المسجلون بالقنصليات يمكنهم استخراج بطاقة التعريف بدون شرط السن"
+  },
+  {
+    id: "digital-progres",
+    cat: "digital",
+    title: "منصة Progres — التسجيل الجامعي",
+    sub: "التسجيل الجامعي النهائي ودفع حقوق التسجيل للطلبة الجدد والقدامى",
+    where: "progres.mesrs.dz/webetu",
+    duration: "فترة التسجيل محددة سنويًا (عادة أوت-سبتمبر للطلبة الجدد)",
+    fees: "200 دج لحقوق التسجيل + 150 دج اختياريًا للنقل الجامعي",
+    docs: ["رقم التسجيل في البكالوريا", "الرقم السري من كشف النقاط الأصلي"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى progres.mesrs.dz/webetu",
+      "تسجيل الدخول برقم التسجيل والرقم السري",
+      "التأكد من المعلومات الشخصية ونتيجة التوجيه",
+      "دفع حقوق التسجيل إلكترونيًا أو عبر مكتب البريد"
+    ],
+    note: "الطلبة القدامى يستعملون progres.mesrs.dz/epaiement لإعادة التسجيل"
+  },
+  {
+    id: "digital-onec-bac",
+    cat: "digital",
+    title: "الديوان الوطني للامتحانات والمسابقات (ONEC)",
+    sub: "نتائج البكالوريا، سحب الاستدعاءات، وكشوف النقاط",
+    where: "bac.onec.dz",
+    duration: "النتائج تُعلن عادة نهاية جوان أو مطلع جويلية",
+    fees: "مجاني",
+    docs: ["رقم التسجيل الموجود في الاستدعاء"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى bac.onec.dz فقط (تأكد من الرابط الرسمي)",
+      "اختيار مديرية التربية التابع لها المترشح",
+      "إدخال رقم التسجيل للاطلاع على النتيجة أو سحب الاستدعاء",
+      "طباعة كشف النقاط أو الاستدعاء بصيغة PDF"
+    ],
+    note: "احذر أي رابط أو موعد يُنشر عبر فيسبوك من جهات غير رسمية؛ الرابط الوحيد هو bac.onec.dz"
+  },
+  {
+    id: "digital-awlya",
+    cat: "digital",
+    title: "فضاء الأولياء (awlya.education.dz)",
+    sub: "متابعة أولياء التلاميذ لنتائج ومسار أبنائهم فـ التعليم المتمدرس",
+    where: "awlya.education.dz",
+    duration: "الاطلاع متاح فورًا أونلاين",
+    fees: "مجاني",
+    docs: ["معلومات التسجيل المدرسي للتلميذ"],
+    forExpats: false,
+    steps: [
+      "الدخول إلى awlya.education.dz",
+      "إنشاء حساب أو تسجيل الدخول كولي أمر",
+      "ربط الحساب بالتلميذ عبر معلومات التسجيل",
+      "متابعة النتائج والغيابات ونتيجة البكالوريا للمتمدرسين"
+    ],
+    note: "مخصصة للمترشحين المتمدرسين في المؤسسات الحكومية؛ تكمل خدمة bac.onec.dz"
+  },
+  
 ];
 
 /* ---------------------------------------------------------
@@ -1366,7 +1729,7 @@ function TopBar({ title, onBack, right }) {
         zIndex: 20,
         background: C.white,
         borderBottom: `1px solid ${C.border}`,
-        padding: "16px 18px",
+        padding: "calc(16px + env(safe-area-inset-top, 0px)) 18px 16px",
         display: "flex",
         alignItems: "center",
         gap: 12,
@@ -1407,13 +1770,14 @@ function SearchBar({ query, setQuery, autoFocus }) {
         display: "flex",
         alignItems: "center",
         gap: 10,
-        background: C.bg,
-        border: `1px solid ${C.border}`,
-        borderRadius: 14,
-        padding: "12px 14px",
+        background: C.white,
+        border: `1px solid ${C.creamBorder}`,
+        borderRadius: 16,
+        padding: "13px 16px",
+        boxShadow: "0 2px 8px rgba(20,35,28,0.04)",
       }}
     >
-      <Search size={18} color={C.green} />
+      <Search size={17} color={C.gold} />
       <input
         autoFocus={autoFocus}
         value={query}
@@ -1775,26 +2139,25 @@ function HomePage({ query, setQuery, onOpenCategory, onOpenProc, countByCategory
     <div>
       <div
         style={{
-          background: C.white,
-          padding: "22px 18px 20px",
-          borderBottom: `1px solid ${C.border}`,
+          background: `linear-gradient(180deg, ${C.bg} 0%, ${C.headerBg} 100%)`,
+          padding: "28px 22px 22px",
+          borderBottom: `1px solid ${C.creamBorder}`,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-          <div>
-            <p style={{ color: C.textMuted, fontSize: 12.5, margin: 0 }}>مرحبًا بيك 👋</p>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 7 }}>
-              <h1 style={{ color: C.text, fontSize: 23, fontWeight: 800, margin: "2px 0 0" }}>دزايرنا</h1>
-              <span style={{ color: C.textMuted, fontSize: 12, fontWeight: 600, letterSpacing: 0.3 }}>Dzayerna</span>
-            </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
+          <AlgeriaEmblem size={64} />
+          <div style={{ textAlign: "right" }}>
+            <h1 style={{ fontFamily: "'Amiri', serif", color: C.text, fontSize: 26, fontWeight: 700, margin: 0, lineHeight: 1.15 }}>دزايرنا</h1>
+            <p style={{ color: C.textMuted, fontSize: 12, letterSpacing: 0.5, margin: "2px 0 0" }}>DZAYERNA · دليلك الإداري</p>
           </div>
-          <AlgeriaEmblem size={48} />
         </div>
-        <p style={{ color: C.textMuted, fontSize: 13, lineHeight: 1.6, margin: "0 0 16px", maxWidth: 460 }}>
-          كل الإجراءات الإدارية في الجزائر، لأهل الوطن وأبناء الجالية، فمكان واحد.
+        <p style={{ color: C.textMuted, fontSize: 13.5, lineHeight: 1.9, margin: "16px 0 0", textAlign: "right" }}>
+          الإجراءات الإدارية في الجزائر، داخل الوطن ولأبناء الجالية، فمكان واحد.
         </p>
 
-        <SearchBar query={query} setQuery={setQuery} />
+        <div style={{ marginTop: 18 }}>
+          <SearchBar query={query} setQuery={setQuery} />
+        </div>
       </div>
 
       <div style={{ padding: "22px 18px 40px" }}>

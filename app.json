@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "دزايرنا",
+    "slug": "dzayerna",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FAF9F5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./adaptive-icon.png",
+        "backgroundColor": "#0B6B3A"
+      },
+      "package": "com.dzayerna.app"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}

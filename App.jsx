@@ -1729,7 +1729,7 @@ function TopBar({ title, onBack, right }) {
         zIndex: 20,
         background: C.white,
         borderBottom: `1px solid ${C.border}`,
-        padding: "16px 18px",
+        padding: "calc(16px + env(safe-area-inset-top, 0px)) 18px 16px",
         display: "flex",
         alignItems: "center",
         gap: 12,
