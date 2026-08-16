@@ -23,7 +23,6 @@
       "package": "com.dzayerna.app"
     },
     "plugins": [
-      "expo-asset",
       "expo-font"
     ],
     "extra": {
